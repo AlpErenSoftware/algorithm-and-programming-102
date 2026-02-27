@@ -1,6 +1,3 @@
-from collections import deque
-
-
 class BSTNode:
     """Node for Binary Search Tree."""
 
@@ -161,9 +158,12 @@ class BinarySearchTree:
             return []
 
         result = []
-        queue = deque([self.root])
-        while queue:
-            node = queue.popleft()
+        queue = [self.root]
+        front_index = 0
+
+        while front_index < len(queue):
+            node = queue[front_index]
+            front_index += 1
             result.append(node.key)
             if node.left is not None:
                 queue.append(node.left)

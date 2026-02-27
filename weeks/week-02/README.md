@@ -160,7 +160,9 @@ flowchart TD
 - Forgetting to update tree root after delete.
 
 ## Further Reading Notes
-- Python docs for `collections.deque` (used in level-order traversal).
+- Compare queue implementations for level-order traversal:
+  - plain Python list with front index
+  - plain Python list with `pop(0)` (simpler, but slower on large inputs)
 - Visual references: tree traversal animations.
 - Extension topic: self-balancing BSTs (AVL and Red-Black Trees).
 

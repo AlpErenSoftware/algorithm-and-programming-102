@@ -1,6 +1,3 @@
-from collections import deque
-
-
 class TreeNode:
     """Node for a binary tree."""
 
@@ -25,9 +22,12 @@ class BinaryTree:
         if self.is_empty():
             return False
 
-        queue = deque([self.root])
-        while queue:
-            node = queue.popleft()
+        queue = [self.root]
+        front_index = 0
+
+        while front_index < len(queue):
+            node = queue[front_index]
+            front_index += 1
             if node.value == target:
                 return True
             if node.left is not None:
@@ -105,9 +105,12 @@ class BinaryTree:
             return []
 
         result = []
-        queue = deque([self.root])
-        while queue:
-            node = queue.popleft()
+        queue = [self.root]
+        front_index = 0
+
+        while front_index < len(queue):
+            node = queue[front_index]
+            front_index += 1
             result.append(node.value)
             if node.left is not None:
                 queue.append(node.left)
