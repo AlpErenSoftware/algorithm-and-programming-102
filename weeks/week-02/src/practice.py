@@ -29,7 +29,6 @@ class BinaryTree():
         value: this parameter will be used as a position of the Node
         """
         self.root = Node(text,value)
-        self.nodeList = []
           
     def add_node(self,text: str,value: int):
         """Insert a Node which used as a BST. 
@@ -43,14 +42,12 @@ class BinaryTree():
             if value>current_node.value:
                 if current_node.right is None:
                     current_node.right = new_node
-                    self.nodeList.append(new_node)
                     break
                 else:
                     current_node = current_node.right
             elif value<current_node.value:
                 if current_node.left is None:
                     current_node.left = new_node
-                    self.nodeList.append(new_node)
                     break
                 else:
                     current_node = current_node.left
@@ -101,44 +98,42 @@ class BinaryTree():
             return 0
         return 1 + max(self._height(current_node.left),self._height(current_node.right))
 
-    def delete(self, value: int):
-        """Deletes the selected node in BST (root is not deleted)
+    # def delete(self, value: int):
+    #     """Deletes the selected node in BST (root is not deleted)
         
-        value: The parameter of the node you want to delete
-        """
-        currentNode = self.root
-        # if value == currentNode.value:
-        #     if currentNode.left.value < currentNode.right.value:
-        #         self.root = currentNode.right
-        #         for N in self.nodeList:
-        #             self.add_node(N.text,N.value)
-        #     else:
-        #         self.root = currentNode.left
-        #         for N in self.nodeList:
-        #             self.add_node(N.text,N.value)
-        # else:
-        while True:
-            if value < currentNode.value:
-                if currentNode.left.value == value:
-                    parentNode = currentNode
-                    currentNode = currentNode.left
-                else:
-                    currentNode = currentNode.left
-            elif value > currentNode.value:
-                if currentNode.right.value == value:
-                    parentNode = currentNode
-                    currentNode = currentNode.right
-                else:
-                    currentNode = currentNode.right
-            else:
-                if not currentNode.left is None:
-                    parentNode.left.text = currentNode.left.text
-                    parentNode.left.value = currentNode.left.value
-                    break
-                if not currentNode.right is None:
-                    parentNode.right.text = currentNode.right.text
-                    parentNode.right.value = currentNode.right.value
-                    break
+    #     value: The parameter of the node you want to delete
+    #     """
+    #     currentNode = self.root
+    #     if value == currentNode.value:
+    #         if currentNode.left.value < currentNode.right.value:
+    #             self.root = currentNode.right
+    #         else:
+    #             self.root = currentNode.left
+                
+    #     else:
+    #         while True:
+    #             if value < currentNode.value:
+    #                 if currentNode.left.value == value:
+    #                     parentNode = currentNode
+    #                     currentNode = currentNode.left
+    #                 else:
+    #                     currentNode = currentNode.left
+    #             elif value > currentNode.value:
+    #                 if currentNode.right.value == value:
+    #                     parentNode = currentNode
+    #                     currentNode = currentNode.right
+    #                 else:
+    #                     currentNode = currentNode.right
+    #             else:
+    #                 if not currentNode.left is None:
+    #                     parentNode.left.text = currentNode.left.text
+    #                     parentNode.left.value = currentNode.left.value
+    #                     break
+    #                 if not currentNode.right is None:
+    #                     parentNode.right.text = currentNode.right.text
+    #                     parentNode.right.value = currentNode.right.value
+    #                     break
+    
 
 
 if __name__ == "__main__":
@@ -155,9 +150,11 @@ if __name__ == "__main__":
     # print(my_tree.size())
     # print(my_tree.height())
 
+    print(my_tree.size())
     print(my_tree.delete(15))
     print(my_tree.search_value(15))
     print(my_tree.delete(32))
     print(my_tree.search_value(32))
+    print(my_tree.size())
 
     
