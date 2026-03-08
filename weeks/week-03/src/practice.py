@@ -149,4 +149,26 @@ def search_jump(source_list:list, target:int)->tuple:
 
 if __name__ == "__main__":
     # TODO Create positive and negative case scenarios.
-    pass
+    my_list_empty = []
+    my_list_unsorted = generate_random_unsorted_list()
+    my_list_sorted = generate_random_sorted_list()
+    print(f"Unsorted List: {my_list_unsorted}")
+    print(f"Sorted List: {my_list_sorted}")
+    print(f"Unsorted List Target: {my_list_unsorted[3]}")
+    print(f"Sorted List Target: {my_list_sorted[3]}")
+    unsorted_target = my_list_unsorted[3]
+    sorted_target = my_list_sorted[3]
+    false_target = 0
+    #Linear search positive case
+    print(f"---Linear Search Positive Case--- \n Target: {unsorted_target} , Result: {search_linear(my_list_unsorted,unsorted_target)}")    
+    print(f"---Linear Search Negative Case--- \n Target: {false_target} , Result: {search_linear(my_list_unsorted,false_target)}")
+    print("-------------------------------------------------------")
+    print(f"---Binary Search Positive Case--- \n Target: {sorted_target} , Result: {search_binary(my_list_sorted,sorted_target)}")
+    print(f"---Binary Search Negative Case--- \n Target: {false_target} , Result: {search_binary(my_list_sorted,false_target)}")
+    print("-------------------------------------------------------")
+    print(f"---Jump Search Positive Case--- \n Target: {sorted_target} , Result: {search_jump(my_list_sorted,sorted_target)}")
+    print(f"---Jump Search Negative Case--- \n Target: {false_target} , Result: {search_jump(my_list_sorted,false_target)}")
+    print("-------------------------------------------------------")
+    print(f"---The List May Be Empty--- \n Linear Search: {search_linear(my_list_empty,unsorted_target)} \n Binary Search: {search_binary(my_list_empty,sorted_target)} \n Jump Search: {search_jump(my_list_empty,sorted_target)}")
+
+    
