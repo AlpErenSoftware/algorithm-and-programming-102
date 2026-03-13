@@ -1,20 +1,3 @@
-# 0. Utils: 
-        # Functions that help other functions
-        # Related functions:
-            # generate_random_unsorted_list(n:int=20, min_value:int=0, max_value:int=1000)->list:
-            # generate_random_sorted_list(n:int=20, min_value:int=0, max_value:int=1000)->list:
-# 1. Linear Search:
-        # Sequentially iterates through all array indices to locate the target value.
-        # Related functions:
-        # search_linear(source_list:list, target:int)->tuple:
-# 2. Binary Search:
-        # Finds the target value in a sorted array by repeatedly dividing the search interval in half.
-        # Related functions:
-        # search_binary(source_list:list, target:int)->tuple:
-# 3. Jump Search:
-        # Locates a target by jumping through fixed blocks and performing a linear search within the identified range.
-        # Related functions:
-        # search_jump(source_list:list, target:int)->tuple:
 import random
 
 def generate_random_unsorted_list(n:int=20, min_value:int=0, max_value:int=1000)->list:
@@ -47,14 +30,15 @@ def generate_random_sorted_list(n:int=20, min_value:int=0, max_value:int=1000)->
         new_list : Sorted List.
     """
     new_list = []
-    while len(new_list) < n:
-        if len(new_list) == 0:
+    list_length = len(new_list)
+    while list_length < n:
+        if list_length == 0:
             new_list.append(random.randint(min_value,int((max_value/4))))
-        elif len(new_list) <= n/3:
+        elif list_length <= n/3:
             new_list.append(random.randint(new_list[-1],int((max_value/4))))
-        elif len(new_list) <= (2*n)/3:
+        elif list_length <= (2*n)/3:
             new_list.append(random.randint(new_list[-1],int((max_value/2))))
-        elif len(new_list) <= n:
+        elif list_length <= n:
             new_list.append(random.randint(new_list[-1],int(max_value)))
 
     return new_list
@@ -94,7 +78,6 @@ def search_binary(source_list:list, target:int)->tuple:
     """
     if not source_list: return False, -1
 
-    # TODO Check if the source_list actually sorted. If not raise an error.
     for i in range(len(source_list) - 1):
         if source_list[i] > source_list[i + 1]:
             raise ValueError("The list must be sorted.")
@@ -149,7 +132,7 @@ def search_jump(source_list:list, target:int)->tuple:
         end += block_size
         if start >= n:
             break
-    # TODO Use search_linear method and adjust the indexes
+
     actual_end = min(end,n)
     found, sub_index =search_linear(source_list[start:actual_end],target)
     if found:
@@ -158,8 +141,6 @@ def search_jump(source_list:list, target:int)->tuple:
     return False, -1
 
 if __name__ == "__main__":
-    # TODO Create positive and negative case scenarios.
-    
     #Generates Lists and Select the Target
     my_list_empty = []
     my_list_unsorted = generate_random_unsorted_list()
